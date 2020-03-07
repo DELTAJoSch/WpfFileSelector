@@ -23,16 +23,26 @@ and then create a control using this XAML-Code: <WpfFileSelector:FileBrowser x:N
 
 There are multiple options this control includes:
 You can set the start folder of the control by giving it a start path: StartFolder="C://YOUR_PATH_HERE"
+
 You can get the currently selected folder by querying or binding to: SelectedPath
+
 You can get the currently selected file by querying or binding to: SelectedFile
+
 The appearance of the control can be cahnged using these colors:
+
 SelectedBrush - This is the brush used to colour the selected file
+
 BackgroundBrush - This is the brush used to colour the background of the control
+
 BorderBrush - This is the brush used to colour the border of the file- and folder- entries
+
 FolderBackgroundBrush - This is the brush used to colour each of the file- and folder- entries
 
+
 You can also set a filter to only show files matching this filter:
+
 FileFilter="YOUR_FILTER_HERE"
+
 This Filter should be a string that contains a regular expression. You can pretty much put anything in here. This regular expression is matched against the filename of each file in any currently selected folder. Please note: Refrain from using ^ and $ to denote that the whole filename should be matched. This has already been done for you.
 
 For simple file-ending filtering this regex will do the trick: ([^\t\n\r\\.\\\\\\\*])\*(\\.txt|\\.docx|\\.jpg)
