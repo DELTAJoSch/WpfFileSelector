@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "FileSelectorTest/1.0.0": {
+        "dependencies": {
+          "WpfFileSelector": "1.0.0"
+        },
+        "runtime": {
+          "FileSelectorTest.dll": {}
+        }
+      },
+      "WpfFileSelector/1.0.0": {
+        "runtime": {
+          "WpfFileSelector.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FileSelectorTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WpfFileSelector/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

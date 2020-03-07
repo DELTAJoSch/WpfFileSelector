@@ -1,0 +1,13 @@
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\bin\Release\netcoreapp3.1\WpfFileSelector.deps.json
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\bin\Release\netcoreapp3.1\WpfFileSelector.dll
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\bin\Release\netcoreapp3.1\WpfFileSelector.pdb
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector.csprojAssemblyReference.cache
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\FileBrowser.g.cs
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector_MarkupCompile.cache
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector_MarkupCompile.lref
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\FileBrowser.baml
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector.g.resources
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector.AssemblyInfoInputs.cache
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector.AssemblyInfo.cs
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector.dll
+H:\Dokumente\C# Libraries\WpfFileSelector\WpfFileSelector\obj\Release\netcoreapp3.1\WpfFileSelector.pdb
