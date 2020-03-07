@@ -3,11 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Authors>Johannes Schiemer</Authors>
+    <Company />
+    <Copyright>GNU-GPL v3</Copyright>
+    <PackageLicenseFile>WpfFileSelectorLicense.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/DELTAJoSch/WpfFileSelector</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DELTAJoSch/WpfFileSelector</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Images\001-file.png" />
     <None Remove="Images\002-folder.png" />
+    <None Include="..\WpfFileSelectorLicense.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
