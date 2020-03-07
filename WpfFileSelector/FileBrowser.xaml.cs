@@ -304,79 +304,16 @@ namespace WpfFileSelector
         private void SetMainFolderView()
         {
             CurrentFolderContent.Clear();
-            int x = 0;
 
-            //clear the current FolderView from all child elements
-            foreach(object o in FolderView.Children)
-            {
-                try
-                {
-                    var border = (System.Windows.Controls.Border)o;
-                    var grid = (System.Windows.Controls.Grid)border.Child;
-                    
-                    foreach(object b in grid.Children)
-                    {
-                        if (b.GetType() == typeof(System.Windows.Controls.Button))
-                        {
-                            var btn = (System.Windows.Controls.Button)b;
-                            btn.Click -= GenericFileButton_Click;
-                            btn.MouseDoubleClick -= GenericFolderButton_DoubleClick;
-                        }
-                    }
-                }
-                catch(InvalidCastException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            ClearFolderView();
 
-            FolderView.Children.Clear();
-
-            //calculate the path of the parent folder by removing the last folder level
-            //and add a back-button
-            var path = SelectedPath.Split("\\");
-
-            StringBuilder builder = new StringBuilder();
-            builder.Append(path[0]);
-            for(int i = 1; i < path.Length - 1; i++)
-            {
-                builder.Append("\\");
-                builder.Append(path[i]);
-            }
-            PreviousPath = builder.ToString();
-            CurrentFolderContent.Add("btn_back", new FolderResource(PreviousPath, "...", true));
+            GenerateBackButton();
 
             //check the current path on validity
             if (!String.IsNullOrEmpty(SelectedPath))
             {
-                // add all folders in the current path
-                foreach (string s in Directory.EnumerateDirectories(SelectedPath))
-                {
-                    string[] name = s.Split("\\");
-
-                    CurrentFolderContent.Add("btn_" + x.ToString(), new FolderResource(s, name.Last(), true));
-                    x++;
-                }
-
-                //add all files or all files matching the filter in the currently selected folder
-                foreach (string s in Directory.EnumerateFiles(SelectedPath))
-                {
-                    string[] name = s.Split("\\");
-
-                    if(String.IsNullOrEmpty(FileFilter))
-                    {
-                        CurrentFolderContent.Add("btn_" + x.ToString(), new FolderResource(s, name.Last(), false));
-                    }
-                    else
-                    {
-                        if(Regex.IsMatch(name.Last(), $"^{FileFilter}$"))
-                        {
-                            CurrentFolderContent.Add("btn_" + x.ToString(), new FolderResource(s, name.Last(), false));
-                        }
-                    }
-                    
-                    x++;
-                }
+                //analyze the directory and add to list of buttons
+                AnalyzeDirectory();
 
                 //create the correct child elements
                 foreach (KeyValuePair<string, FolderResource> valuePair in CurrentFolderContent)
@@ -491,6 +428,94 @@ namespace WpfFileSelector
             grid.Background = FolderBackgroundBrush;
 
             return grid;
+        }
+
+        /// <summary>
+        /// Clears the FolderView control from all of its child elements
+        /// </summary>
+        private void ClearFolderView()
+        {
+            foreach (object o in FolderView.Children)
+            {
+                try
+                {
+                    var border = (System.Windows.Controls.Border)o;
+                    var grid = (System.Windows.Controls.Grid)border.Child;
+
+                    foreach (object b in grid.Children)
+                    {
+                        if (b.GetType() == typeof(System.Windows.Controls.Button))
+                        {
+                            var btn = (System.Windows.Controls.Button)b;
+                            btn.Click -= GenericFileButton_Click;
+                            btn.MouseDoubleClick -= GenericFolderButton_DoubleClick;
+                        }
+                    }
+                }
+                catch (InvalidCastException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+            FolderView.Children.Clear();
+        }
+
+        /// <summary>
+        /// This method generates the topmost button, the "back"-button
+        /// </summary>
+        private void GenerateBackButton()
+        {
+            //calculate the path of the parent folder by removing the last folder level
+            //and add a back-button
+            var path = SelectedPath.Split("\\");
+
+            StringBuilder builder = new StringBuilder();
+            builder.Append(path[0]);
+            for (int i = 1; i < path.Length - 1; i++)
+            {
+                builder.Append("\\");
+                builder.Append(path[i]);
+            }
+            PreviousPath = builder.ToString();
+            CurrentFolderContent.Add("btn_back", new FolderResource(PreviousPath, "...", true));
+        }
+
+        /// <summary>
+        /// Indexes all files and folders in a given folder and adds them to the list of contents
+        /// </summary>
+        private void AnalyzeDirectory()
+        {
+            int x = 0;
+
+            // add all folders in the current path
+            foreach (string s in Directory.EnumerateDirectories(SelectedPath))
+            {
+                string[] name = s.Split("\\");
+
+                CurrentFolderContent.Add("btn_" + x.ToString(), new FolderResource(s, name.Last(), true));
+                x++;
+            }
+
+            //add all files or all files matching the filter in the currently selected folder
+            foreach (string s in Directory.EnumerateFiles(SelectedPath))
+            {
+                string[] name = s.Split("\\");
+
+                if (String.IsNullOrEmpty(FileFilter))
+                {
+                    CurrentFolderContent.Add("btn_" + x.ToString(), new FolderResource(s, name.Last(), false));
+                }
+                else
+                {
+                    if (Regex.IsMatch(name.Last(), $"^{FileFilter}$"))
+                    {
+                        CurrentFolderContent.Add("btn_" + x.ToString(), new FolderResource(s, name.Last(), false));
+                    }
+                }
+
+                x++;
+            }
         }
     }
 }
