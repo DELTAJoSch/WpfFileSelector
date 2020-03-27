@@ -1,5 +1,5 @@
 ﻿// Copyright (c) 2020 Johannes Schiemer
-// Licensed under GNU-GPLV3
+// Licensed under the MIT License
 using System;
 using System.Collections.Generic;
 using System.Text;
